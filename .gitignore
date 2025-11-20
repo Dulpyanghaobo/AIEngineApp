@@ -1,0 +1,69 @@
+# .DS_Store
+.DS_Store
+
+# /Cubetree/.idea/
+/Cubetree/.idea/*
+/SuccessFactors/.idea/*
+/.idea/*
+# Ignore Xcode user state
+*.xcuserstate
+*.xcscmblueprint
+*.xcuserdata/
+xcuserdata
+
+# project.xcworkspace
+project.xcworkspace
+
+# keep shared data(MOB-93560: files beneath xcshareddata folder is not actually being tracked and you may need manually git-commit your target file)
+!xcshareddata
+
+# Ignore build artefacts
+**/build/**
+
+# Ignore xccheckout
+*.xccheckout
+
+# Ignore gcno files
+*.gcno
+# Ignore log files
+*.log
+CarthageRoot/Carthage/*
+x86_64-apple-ios-simulator.swiftinterface.lock
+
+# Ignore lint report
+/StaticAnalysis/Linting/swiftlint_report.json
+Utilities/find_leaked_xml/.idea
+
+# Archives 导出的 IPA 包
+*.xcarchive
+*.ipa
+
+# Crash 报告
+*.crash
+
+# Fastlane 输出目录（如果你后面加 Fastlane 自动化）
+fastlane/report.xml
+fastlane/screenshots
+fastlane/test_output
+
+# dSYM 文件（调试符号文件）
+*.dSYM.zip
+*.dSYM
+
+# XR Cinema 特别建议：
+# 如果你的 usdz 是通过 git-lfs 管理，那么 *.usdz 需要排除 lfs 未 track 文件
+# 如果未来有 .usd / .usda / .usdc / .usdzip 也建议加上
+*.usd
+*.usda
+*.usdc
+*.usdz
+*.usdzip
+
+# Vision Pro 特别情况：
+# Reality Composer Pro 可能生成的临时文件
+*.reality
+*.realitycomposition
+swiftlint.zip
+WatermarkCamera/WatermarkCamera.xcodeproj/project.xcworkspace/xcuserdata/i564407.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcuserstate
+WatermarkCamera/WatermarkCamera.xcodeproj/project.xcworkspace/xcuserdata/i564407.xcuserdatad/UserInterfaceState.xcuserstate

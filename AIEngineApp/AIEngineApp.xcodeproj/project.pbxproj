@@ -270,6 +270,7 @@
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "我们会读取最近一周的日历事件，用于在本机分析现实生活压力与梦境情绪之间的关系。";
 				INFOPLIST_KEY_NSCameraUsageDescription = NSCameraUsageDescription;
 				INFOPLIST_KEY_NSContactsUsageDescription = "App needs access to your contacts to help you search fax recipients.\n";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "我们会读取您的睡眠和心率等健康数据，用于在本机分析梦境与现实生活之间的关系。";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "我们会在本机更新与健康相关的记录，用于改善分析报告和提醒。（如果只读可以写清“不修改您的任何健康记录”）";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -307,6 +308,7 @@
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "我们会读取最近一周的日历事件，用于在本机分析现实生活压力与梦境情绪之间的关系。";
 				INFOPLIST_KEY_NSCameraUsageDescription = NSCameraUsageDescription;
 				INFOPLIST_KEY_NSContactsUsageDescription = "App needs access to your contacts to help you search fax recipients.\n";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "我们会读取您的睡眠和心率等健康数据，用于在本机分析梦境与现实生活之间的关系。";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "我们会在本机更新与健康相关的记录，用于改善分析报告和提醒。（如果只读可以写清“不修改您的任何健康记录”）";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -33,7 +33,7 @@ enum DemoInputPreset: String, CaseIterable, Identifiable {
             """
         case .meetingNotes:
             return """
-            - Project: Jet Fax growth plan
+            - Project: Fax growth plan
             - Attendees: Hab, PM, Marketing
             - Decisions:
               • Focus on “free fax” keyword for ASA

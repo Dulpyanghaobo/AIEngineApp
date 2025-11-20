@@ -48,7 +48,7 @@ private struct OnDeviceVsCloudList: View {
                 }
 
                 Section("Transcript") {
-                    NavigationLink("JetFaxDiagnostic View", destination: JetFaxDiagnosticView())
+                    NavigationLink("FaxDiagnostic View", destination: JetFaxDiagnosticView())
                     NavigationLink("AIHubDemo View", destination: AIHubDemoView())
                 }
                 

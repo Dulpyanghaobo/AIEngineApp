@@ -381,7 +381,7 @@ struct ToolFaxScanDemoView: View {
         do {
             // 1. Instructions：告诉模型什么时候应该用哪个 Tool
             let instructions = Instructions {
-                "You are a Jet Fax & Jet Scan assistant."
+                "You are a Fax & Scan assistant."
                 "If the user asks about fax cost, free pages, or how many credits a fax will use, you SHOULD call the 'estimateFaxQuote' tool."
                 "If the user asks about how to scan a document or which preset to use, you SHOULD call the 'suggestScanPreset' tool."
                 "After using tools, explain the result in the same language as the user, and be concise."

@@ -53,7 +53,7 @@ struct JetFaxDiagnosticView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            .navigationTitle("JetFax AI 诊断")
+            .navigationTitle("Fax AI 诊断")
             .alert("错误", isPresented: .constant(viewModel.errorMessage != nil)) {
                 Button("OK", role: .cancel) { viewModel.errorMessage = nil }
             } message: {

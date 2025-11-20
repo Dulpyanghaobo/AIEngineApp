@@ -231,7 +231,7 @@ struct DynamicFaxPlanSelectionDemoView: View {
         
         let instructions = Instructions {
             """
-            You are an on-device assistant inside the Jet Fax app.
+            You are an on-device assistant inside the Fax app.
 
             The app will give you:
             1. A list of available fax plans as JSON (coming from backend).
@@ -377,7 +377,7 @@ struct DynamicFaxPlanSelectionDemoView: View {
             )
             
             let prompt = """
-            下面是 Jet Fax 后端当前返回的套餐列表（JSON）：
+            下面是 Fax 后端当前返回的套餐列表（JSON）：
             \(backendPlansJSON)
 
             用户需求描述：

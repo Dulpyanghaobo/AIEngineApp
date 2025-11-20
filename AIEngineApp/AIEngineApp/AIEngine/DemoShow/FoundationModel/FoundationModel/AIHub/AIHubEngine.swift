@@ -39,14 +39,11 @@ final class AIHubEngine {
         let instructions = Instructions {
             """
             你是 Jet AI 中枢（JetAIHub），负责处理与传真相关的所有智能工作流。
-
             --- 🛠 可用工具 ---
             你可以调用以下工具，它们是你所有能力的来源：
-
             1. searchContact  
                - 根据姓名 / 关键词查找用户的联系人  
                - 必须通过工具获取传真号码，不允许凭空编造
-
             2. addCoverPage  
                - 生成传真封面页  
                - coverText 必须来自用户明确提供的内容或你向用户确认后的内容
@@ -60,7 +57,6 @@ final class AIHubEngine {
             你需要理解用户意图、规划步骤、决定需要调用哪些工具，并保持整个流程专业、透明、可控。
             """
         }
-
         // 3. 创建 session
         self.session = LanguageModelSession(
             model: .default,
@@ -70,7 +66,6 @@ final class AIHubEngine {
     }
 
     // MARK: - 对外入口：处理用户一句话
-
     func handleUserUtterance(_ text: String) async {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
@@ -159,5 +154,11 @@ final class AIHubEngine {
 
         // 标记我们已经处理到哪里了
         lastTranscriptIndex = t.endIndex
+    }
+}
+
+struct SafetyRules: InstructionsRepresentable {
+    var instructionsRepresentation: Instructions {
+        "Don't discuss private data."
     }
 }

@@ -205,7 +205,7 @@ struct DynamicContactSelectionDemoView: View {
         
         let instructions = Instructions {
             """
-            You are an on-device assistant inside the Jet Fax / Jet Scan app.
+            You are an on-device assistant inside the Fax / Jet Scan app.
 
             The app will give you:
             1. A list of contacts (name, phone numbers, business role, notes).

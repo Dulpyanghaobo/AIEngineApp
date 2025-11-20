@@ -198,7 +198,7 @@ struct DynamicWorkflowSchemaDemoView: View {
         
         let instructions = Instructions {
             """
-            You are an on-device assistant inside the Jet Scan / Jet Fax app.
+            You are an on-device assistant inside the Scan / Fax app.
 
             The app will give you:
             1. A description of the current document and business goal (in Chinese).

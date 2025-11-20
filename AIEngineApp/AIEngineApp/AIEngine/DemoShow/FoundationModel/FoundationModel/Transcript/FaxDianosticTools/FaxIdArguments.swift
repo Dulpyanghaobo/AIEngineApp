@@ -4,7 +4,7 @@ import FoundationModels
 // MARK: - Tool 1: 模拟后端传真状态 JSON
 
 /// 模拟后端 “/fax/status” 接口返回的 JSON 结构
-@Generable(description: "模拟 JetFax 后端返回的传真状态 JSON payload")
+@Generable(description: "模拟 Fax 后端返回的传真状态 JSON payload")
 struct FaxBackendStatusPayload {
     @Guide(description: "服务器里的传真唯一 ID")
     var faxId: String
@@ -85,7 +85,7 @@ struct FetchFaxStatusTool: Tool {
 // MARK: - Tool 2: 模拟后端计费 JSON
 
 /// 模拟后端 “/billing/fax” 接口返回的计费信息
-@Generable(description: "模拟 JetFax 后端返回的计费信息 JSON payload")
+@Generable(description: "模拟 Fax 后端返回的计费信息 JSON payload")
 struct FaxBillingInfoPayload {
     @Guide(description: "计费状态，例如 charged / refunded / free")
     var status: String
@@ -120,7 +120,7 @@ struct FetchBillingInfoTool: Tool {
                 status: "free",
                 amount: 0.0,
                 currency: "USD",
-                productId: "jetfax.free.quota",
+                productId: "fax.free.quota",
                 usedFreeQuota: true
             )
         } else if arguments.faxId.uppercased().contains("REFUND") {
@@ -128,7 +128,7 @@ struct FetchBillingInfoTool: Tool {
                 status: "refunded",
                 amount: 2.99,
                 currency: "USD",
-                productId: "jetfax.one_time_20",
+                productId: "fax.one_time_20",
                 usedFreeQuota: false
             )
         } else {
@@ -137,7 +137,7 @@ struct FetchBillingInfoTool: Tool {
                 status: "charged",
                 amount: 2.99,
                 currency: "USD",
-                productId: "jetfax.one_time_20",
+                productId: "fax.one_time_20",
                 usedFreeQuota: false
             )
         }

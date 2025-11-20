@@ -34,14 +34,12 @@ struct PracticeProductIdea: PromptRepresentable {
     }
 }
 
-// MARK: - 主视图：PromptBuilder 练习房 --------------------------------
-
 @MainActor
 struct PromptBuilderPracticeView: View {
     
     // 练习模式 & 输入
     @State private var mode: PromptPracticeMode = .qa
-    @State private var userQuestion: String = "Help me grow my Jet Fax app installs."
+    @State private var userQuestion: String = "Help me grow my Fax app installs."
     
     // PromptBuilder 控制开关（对应文档里的各种 buildX 特性）
     @State private var addShortAnswer: Bool = true
@@ -217,6 +215,7 @@ struct PromptBuilderPracticeView: View {
         
         // 这里的 for line in lines 会触发 PromptBuilder.buildArray(_:)
         let prompt = Prompt {
+            
             for line in lines {
                 line
             }

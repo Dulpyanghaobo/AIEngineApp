@@ -171,7 +171,7 @@ struct DynamicGenerationSchemaDemoView: View {
         
         let instructions = Instructions {
             """
-            You are an on-device assistant inside the Jet Fax app.
+            You are an on-device assistant inside the Fax app.
             You must NOT invent arbitrary values. You must STRICTLY choose
             values that satisfy the dynamic generation schema you receive.
 
@@ -224,7 +224,7 @@ struct DynamicGenerationSchemaDemoView: View {
             
             let actionEnum = DynamicGenerationSchema(
                 name: "Action",
-                description: "Action Jet Fax should perform.",
+                description: "Action Fax should perform.",
                 anyOf: availableActions
             )
             

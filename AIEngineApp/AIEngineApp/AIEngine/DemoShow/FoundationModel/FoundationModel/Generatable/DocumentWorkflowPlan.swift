@@ -1,81 +1,122 @@
+// Enhanced DocumentWorkflowPlan with more complexity for demo
 import SwiftUI
 import Foundation
 import FoundationModels
 
-@Generable(description: "AI workflow plan for a scanned / faxed document.")
+@Generable(description: "AI workflow plan for a scanned / faxed document with extended details.")
 struct DocumentWorkflowPlan {
-    
-    // 文档层面的整体判断 -----------------------------------------
-    
-    @Guide(description: "Short title for this document, like 'IRS 1040 Tax Return' or 'Employment Contract'.")
+
+    // MARK: - Document Level Summary --------------------------------------------------
+    @Guide(description: "Short title for this document, like 'IRS 1040 Tax Return'.")
     var title: String
-    
+
     @Guide(
-        description: "The main type of this document.",
+        description: "Main type of this document.",
         .anyOf([
-            "Tax form",
-            "Government form",
-            "Medical record",
-            "Legal contract",
-            "Invoice",
-            "Bank statement",
-            "ID document",
-            "Other"
+            "Tax form", "Government form", "Medical record", "Legal contract",
+            "Insurance claim", "Invoice", "Bank statement", "ID document", "Receipt", "Other"
         ])
     )
     var documentType: String
-    
-    @Guide(description: "One sentence describing the purpose of the document.")
+
+    @Guide(description: "Purpose or intent behind this document (e.g., filing taxes, onboarding, claim submission).")
     var purposeSummary: String
-    
-    @Guide(description: "Whether this document likely contains sensitive personal information (PII, health, financial).")
+
+    @Guide(description: "Whether the document contains sensitive personal or financial info.")
     var containsSensitiveData: Bool
-    
-    /// 紧急程度：1 = 不急，只是存档；5 = 非常紧急，需要尽快处理 / 发送
-    @Guide(description: "Urgency score from 1 (not urgent) to 5 (very urgent).", .range(1...5))
+
+    @Guide(description: "Urgency score 1 (not urgent) to 5 (very urgent).", .range(1...5))
     var urgencyScore: Int
-    
-    // 扫描相关建议 ---------------------------------------------------
-    
-    @Guide(description: "Recommended scan color mode, like 'Color', 'Grayscale', or 'Black & White'.")
+
+    @Guide(description: "Confidence score for model interpretation, 0.0 to 1.0.", .range(0.0...1.0))
+    var confidenceScore: Double
+
+    // MARK: - Document Structure Analysis --------------------------------------------
+
+    @Guide(description: "Detected number of sections found in the document.", .range(1...20))
+    var sectionCount: Int
+
+    @Guide(description: "Detected key fields like Name, SSN, Address, Invoice#.", .maximumCount(20))
+    var keyFields: [DetectedField]
+
+    @Generable(description: "Key-value field extracted or inferred from OCR.")
+    struct DetectedField: Equatable {
+        @Guide(description: "Field name, like 'Name', 'SSN', 'Total Amount'.")
+        var fieldName: String
+
+        @Guide(description: "Extracted value from OCR.")
+        var fieldValue: String
+
+        @Guide(description: "True if field contains PII or sensitive info.")
+        var isSensitive: Bool
+    }
+
+    // MARK: - Scan Recommendations ----------------------------------------------------
+
+    @Guide(description: "Recommended scan color mode.")
     var recommendedColorMode: String
-    
-    @Guide(description: "Recommended DPI resolution, like 150, 300, or 600.")
+
+    @Guide(description: "Recommended DPI like 150, 300, 600.")
     var recommendedDPI: Int
-    
-    @Guide(description: "Whether to aggressively compress the PDF to reduce file size.")
+
+    @Guide(description: "If PDF compression is recommended.")
     var shouldCompressPDF: Bool
-    
-    // 传真相关建议 ---------------------------------------------------
-    
-    @Guide(description: "Whether this document is suitable to be sent by fax.")
+
+    @Guide(description: "If deskewing, background removal, or edge enhancement is needed.")
+    var imageCleanupChecklist: [String]
+
+    // MARK: - Fax Recommendations -----------------------------------------------------
+
+    @Guide(description: "Whether this document is suitable for fax.")
     var suitableForFax: Bool
-    
-    @Guide(description: "Estimated number of pages when faxed, based on the description / OCR text.", .range(1...50))
+
+    @Guide(description: "Estimated fax pages.", .range(1...100))
     var estimatedFaxPages: Int
-    
-    @Guide(description: "Whether the user should add a fax cover page with notes or disclaimers.")
+
+    @Guide(description: "Whether to add a fax cover page.")
     var shouldAddFaxCover: Bool
-    
-    // 后续行动建议列表 -----------------------------------------------
-    
-    @Guide(
-        description: "A short list of recommended next actions for the user.",
-        .maximumCount(5)
-    )
-    var nextActions: [NextAction]
-    
-    // 内嵌子类型：用 String 做 identifier，避免 GenerationID 约束问题
-    @Generable(description: "One actionable step in the workflow.")
-    struct NextAction: Equatable {
-        /// 稳定标识符，可以是 'save_to_cloud' / 'send_fax' / 'encrypt_pdf' 之类
-        @Guide(description: "Stable identifier for this action, like 'send_fax' or 'save_to_cloud'.")
+
+    @Guide(description: "Fax priority suggestion, 1 to 3.", .range(1...3))
+    var faxPriority: Int
+
+    // MARK: - Workflow Risk Assessment ------------------------------------------------
+
+    @Guide(description: "Warnings the user should know (e.g., missing signature, unclear photo).", .maximumCount(10))
+    var warnings: [String]
+
+    @Guide(description: "Potential errors before sending or storing.", .maximumCount(10))
+    var potentialErrors: [String]
+
+    // MARK: - Suggested Pipeline Steps ------------------------------------------------
+
+    @Guide(description: "Recommended automated pipeline steps.", .maximumCount(10))
+    var pipelineSteps: [PipelineStep]
+
+    @Generable(description: "Represents an automated step in a document pipeline.")
+    struct PipelineStep: Equatable {
+        @Guide(description: "Identifier like 'ocr', 'enhance_image', 'generate_pdf'.")
         var identifier: String
-        
-        @Guide(description: "Short label for this action, like 'Encrypt and save to JetVault'.")
+
+        @Guide(description: "Human-readable title.")
         var title: String
-        
-        @Guide(description: "One sentence explaining why the user should do this.")
+
+        @Guide(description: "Short explanation.")
+        var rationale: String
+    }
+
+    // MARK: - Next Actions ------------------------------------------------------------
+    @Guide(description: "Recommended next actions for the user.", .maximumCount(10))
+    var nextActions: [NextAction]
+
+    @Generable(description: "User-facing next action.")
+    struct NextAction: Equatable {
+        @Guide(description: "Stable identifier.")
+        var identifier: String
+
+        @Guide(description: "Short actionable label.")
+        var title: String
+
+        @Guide(description: "Reason behind recommendation.")
         var rationale: String
     }
 }

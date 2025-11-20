@@ -205,7 +205,7 @@ struct WorkflowToolTranscriptDemoView: View {
 
         // Instructions：告诉模型如何 orchestrate 这些工具做「workflow」
         let instructions = Instructions {
-            "You are a Jet Fax & Jet Scan workflow assistant."
+            "You are a Fax & Scan workflow assistant."
             "The user has uploaded ONE current document (PDF or image). You have tools that operate on this current document."
             "When the user asks about file size, page count, or basic info, call 'getCurrentDocumentInfo'."
             "When the user asks to extract content, key fields, or to understand what is inside the document, call 'ocrCurrentDocument' first."

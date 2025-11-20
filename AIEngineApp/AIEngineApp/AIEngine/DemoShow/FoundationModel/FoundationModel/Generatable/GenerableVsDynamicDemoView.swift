@@ -154,7 +154,7 @@ struct GenerableVsDynamicDemoView: View {
         
         let instructions = Instructions {
             """
-            You are an on-device assistant for Jet Scan / Jet Fax.
+            You are an on-device assistant for Scan / Fax.
 
             You will receive an OCR text or document description.
             You MUST:
@@ -242,7 +242,7 @@ struct GenerableVsDynamicDemoView: View {
         
         let actionEnum = DynamicGenerationSchema(
             name: "Action",
-            description: "Action Jet Fax should perform.",
+            description: "Action Fax should perform.",
             anyOf: availableActions
         )
         
